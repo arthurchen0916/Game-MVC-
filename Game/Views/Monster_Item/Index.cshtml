@@ -2,10 +2,17 @@
 
 @{
     ViewBag.Title = "Index";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
-<h2>Index</h2>
+<h2>怪物掉落物品資料表</h2>
 
+<p>
+    <a href="@Url.Action("Index","Home")">返回至功能主控版</a>
+</p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

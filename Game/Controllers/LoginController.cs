@@ -15,23 +15,42 @@ namespace Game.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Authorise(Member account)
+        public ActionResult Authorise (Game.Models.Member model)
         {
-            using(GameEntities1 db= new GameEntities1())
+            using(GameEntities1 db = new GameEntities1())
             {
-                var userDetail = db.Members.Where(x => x.Account == account.Account && x.Password == account.Password).FirstOrDefault();
-                if(userDetail == null)
+                var userDetails = db.Members.Where(x => x.Account == model.Account && x.Password == model.Password).FirstOrDefault();
+                if ( userDetails == null)
                 {
-                    account.LoginErrorMsg = "Invalid Account or Password";
-                    return View("Index", account);
+                    model.LoginErrorMsg = "Invalid Account or Password";
+                    return View("Index", model);
                 }
                 else
                 {
-                    Session["userID"] = account.UserID;
+                    Session["userID"] = userDetails.UserID;
                     return RedirectToAction("Index","Home");
                 }
             }
+        }
+        public ActionResult MonsterNews()
+        {
+            return RedirectToAction("Index", "MonsterNews");
+        }
 
+        public ActionResult Members()
+        {
+            return RedirectToAction("Index", "Members");
+        }
+
+        public ActionResult Monster_Item()
+        {
+            return RedirectToAction("Index", "Monster_Item");
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

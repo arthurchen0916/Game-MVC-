@@ -17,11 +17,14 @@ namespace Game.Models
     public partial class Member
     {
         public int UserID { get; set; }
+
         [Required(ErrorMessage ="此欄為必填項")]
         public string Account { get; set; }
+
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "此欄為必填項")]
         public string Password { get; set; }
+
         public string LoginErrorMsg { get; set; }
     }
 }
