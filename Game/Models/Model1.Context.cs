@@ -25,7 +25,7 @@ namespace Game.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Member> Member { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<Monster_Item> Monster_Item { get; set; }
         public virtual DbSet<MonsterNew> MonsterNew { get; set; }
     }

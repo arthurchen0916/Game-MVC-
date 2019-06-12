@@ -17,7 +17,7 @@ namespace Game.Controllers
         // GET: Members
         public ActionResult Index()
         {
-            return View(db.Member.ToList());
+            return View(db.Members.ToList());
         }
 
         // GET: Members/Details/5
@@ -27,7 +27,7 @@ namespace Game.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Member.Find(id);
+            Member member = db.Members.Find(id);
             if (member == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Game.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Member.Add(member);
+                db.Members.Add(member);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Game.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Member.Find(id);
+            Member member = db.Members.Find(id);
             if (member == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Game.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Member.Find(id);
+            Member member = db.Members.Find(id);
             if (member == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Game.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Member member = db.Member.Find(id);
-            db.Member.Remove(member);
+            Member member = db.Members.Find(id);
+            db.Members.Remove(member);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
