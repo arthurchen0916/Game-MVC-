@@ -89,7 +89,8 @@ namespace Game.Controllers
             return View(member);
         }
 
-        // GET: Members/Delete/5
+        // GET: Members/
+      
         public ActionResult Delete(int? id)
         {
             if (id == null)

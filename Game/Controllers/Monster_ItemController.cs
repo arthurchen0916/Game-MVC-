@@ -21,13 +21,13 @@ namespace Game.Controllers
         }
 
         // GET: Monster_Item/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id ,string id2)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Monster_Item monster_Item = db.Monster_Item.Find(id);
+            Monster_Item monster_Item = db.Monster_Item.Find(id,id2);
             if (monster_Item == null)
             {
                 return HttpNotFound();
@@ -59,14 +59,14 @@ namespace Game.Controllers
         }
 
         // GET: Monster_Item/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id,string id2)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Monster_Item monster_Item = db.Monster_Item.Find(id);
-            if (monster_Item == null)
+            Monster_Item monster_Item = db.Monster_Item.Find(id,id2);
+            if (monster_Item == null  )
             {
                 return HttpNotFound();
             }
@@ -90,13 +90,13 @@ namespace Game.Controllers
         }
 
         // GET: Monster_Item/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id,string id2)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Monster_Item monster_Item = db.Monster_Item.Find(id);
+            Monster_Item monster_Item = db.Monster_Item.Find(id,id2);
             if (monster_Item == null)
             {
                 return HttpNotFound();
@@ -107,9 +107,9 @@ namespace Game.Controllers
         // POST: Monster_Item/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, string id2)
         {
-            Monster_Item monster_Item = db.Monster_Item.Find(id);
+            Monster_Item monster_Item = db.Monster_Item.Find(id,id2);
             db.Monster_Item.Remove(monster_Item);
             db.SaveChanges();
             return RedirectToAction("Index");
